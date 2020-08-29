@@ -257,7 +257,7 @@
                     <img src="http://static.inven.co.kr/image_2011/site_image/lol/dataninfo/icon/champions/Nunu_Square_0_1.jpg?v=20200528a"
                         alt="a"><span>누누</span></a>
             </div>
-            <div class="champion_Box" data-champion-name="" data-champion-name-chosung="">
+            <div class="champion_Box" data-champion-name="니달리" data-champion-name-chosung="ㄴㄷㄹ">
                 <a href="https://www.op.gg/champion/nidalee/statistics/jungle">
                     <img src="http://static.inven.co.kr/image_2011/site_image/lol/dataninfo/icon/champions/Nidalee_Square_0_1.jpg?v=20200528a"
                         alt="a"><span>니달리</span></a>
@@ -363,24 +363,109 @@
 
         const champion_Data = document.querySelectorAll(".champion_Box");
         const champion_Input = document.querySelector("#champion_Input");
-        let chosung_Cnt = 0;
+        // $("#champion_Input").keyup(function () {
+        //     for (let i = 0; i < champion_Data.length; i++) {
+        //         if (champion_Input.value == "") {
+        //             for (let j = 0; j < champion_Data.length; j++) {
+        //                 champion_Data[j].style.display = "block";
+        //             }
+        //             break;
+        //         }
+        //         else if (champion_Data[i].dataset.championName === champion_Input.value) {
+        //             // console.log( $("#champion_Input").val());
+        //             champion_Data[i].style.display = "block";
+        //         }
+        //         else {
+        //             champion_Data[i].style.display = "none";
+        //         }
+        //     }
+        // })
+
         $("#champion_Input").keyup(function () {
+
             for (let i = 0; i < champion_Data.length; i++) {
-                if (champion_Input.value == "") {
-                    for (let j = 0; j < champion_Data.length; j++) {
-                        champion_Data[j].style.display = "block";
+                let chosung_Cnt = 0;
+                for (let j = 0; j < champion_Data[i].dataset.championNameChosung.length; j++) {
+                    console.log(champion_Input.value)
+                    if (champion_Data[i].dataset.championNameChosung.charAt(j) == champion_Input.value) {
+                        chosung_Cnt++;
+                        continue;
                     }
-                    break;
                 }
-                else if (champion_Data[i].dataset.championName === champion_Input.value) {
-                    // console.log( $("#champion_Input").val());
+                if (chosung_Cnt > 0) {
                     champion_Data[i].style.display = "block";
                 }
                 else {
                     champion_Data[i].style.display = "none";
                 }
+                if (champion_Data[i].dataset.championNameChosung === champion_Input.value) {
+                    // console.log( $("#champion_Input").val());
+                    champion_Data[i].style.display = "block";
+                }
+
+                if (champion_Input.value == "") {
+                    for (let j = 0; j < champion_Data.length; j++) {
+                        champion_Data[j].style.display = "block";
+                    }
+                }
+            }
+
+            for (let i = 0; i < champion_Data.length; i++) {
+                let chosung_Cnt = 0;
+                for (let j = 0; j < champion_Data[i].dataset.championName.length; j++) {
+                    console.log(champion_Input.value)
+                    if (champion_Data[i].dataset.championName.charAt(j) == champion_Input.value) {
+                        chosung_Cnt++;
+                        continue;
+                    }
+                }
+                if (chosung_Cnt > 0) {
+                    champion_Data[i].style.display = "block";
+                }
+                else {
+                    champion_Data[i].style.display = "none";
+                }
+                if (champion_Data[i].dataset.championName === champion_Input.value) {
+                    // console.log( $("#champion_Input").val());
+                    champion_Data[i].style.display = "block";
+                }
+
+                if (champion_Input.value == "") {
+                    for (let j = 0; j < champion_Data.length; j++) {
+                        champion_Data[j].style.display = "block";
+                    }
+                }
             }
         })
+
+        // $("#champion_Input").keyup(function () {
+        //     for (let i = 0; i < champion_Data.length; i++) {
+        //         let chosung_Cnt = 0;
+        //         for (let j = 0; j < champion_Data[i].dataset.championNameChosung.length; j++) {
+        //             console.log(champion_Input.value)
+        //             if (champion_Data[i].dataset.championNameChosung.charAt(j) == champion_Input.value) {
+        //                 chosung_Cnt++;
+        //                 continue;
+        //             }
+        //         }
+        //         if (chosung_Cnt > 0) {
+        //             champion_Data[i].style.display = "block";
+        //         }
+        //         else {
+        //             champion_Data[i].style.display = "none";
+        //         }
+        //         if (champion_Data[i].dataset.championNameChosung === champion_Input.value) {
+        //             // console.log( $("#champion_Input").val());
+        //             champion_Data[i].style.display = "block";
+        //         }
+
+        //         if (champion_Input.value == "") {
+        //             for (let j = 0; j < champion_Data.length; j++) {
+        //                 champion_Data[j].style.display = "block";
+        //             }
+        //         }
+        //     }
+        // })
 
         // function reset_box() {
         //     if (champion_Input.value == "") {
