@@ -141,7 +141,7 @@ $(function () {
                 'ㄾ': 'ㄹㅌ',
                 'ㄿ': 'ㄹㅍ',
                 'ㅀ': 'ㄹㅎ',
-                'ㅄ': 'ㅂㅅ'
+                'ㅄ': 'ㅂㅅ'  
             };
             for (var doubleChosung in doubleChosungArray) {
                 if (doubleChosungArray.hasOwnProperty(doubleChosung)) {
@@ -150,7 +150,7 @@ $(function () {
                 }
             }
             return keyword;
-        },
+        },//동시입력 초기화
             keyword = $(this).val().toLowerCase().replace(/[~!#$^&*=+|:;?"<,.>'\s]/g, ''),
             $championList = $('.champion-index__champion-item');
 
@@ -159,7 +159,7 @@ $(function () {
         $championList.each(function (i, o) {
             var championName = $(o).data('champion-name'),
                 championKey = $(o).data('champion-key'),
-                championNameChosung = $(o).data('champion-name-chosung');
+                championNameChosung = $(o).data('champion-name-chosung'); //각 챔피언 데이터 변수
 
             if (championName.indexOf(keyword) >= 0 || championKey.indexOf(keyword) >= 0 || (championNameChosung && championNameChosung.indexOf(keyword) >= 0)) {
                 $(o).removeClass('hide');
@@ -167,7 +167,7 @@ $(function () {
             } else {
                 $(o).removeClass('show');
                 $(o).addClass('hide');
-            }
+            } //검색 결과에 따라 챔피언 목록을 보여주는 부분
         });
     });
 
