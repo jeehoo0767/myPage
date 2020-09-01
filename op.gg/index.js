@@ -99,6 +99,78 @@ $("#champion_Input").keyup(function () {
     }
 })
 
+$(function () {
+    $(".champion-list-filter__type").on('click', '.champion-list-filter__type__item', function () {
+        var $filterList = $(this).closest('.champion-list-filter__type').find('.champion-list-filter__type__item'),
+            filterType = $(this).data("filter-type"),
+            $itemList = $(".champion-index__champion-item"),
+            itemClass = "champion-index__champion-item";
+
+        // 탭 이동 시 초기화
+        $(".champion-list-filter__keyword input").val("");
+        $itemList.each(function (index, item) {
+            $(item).removeClass('hide').addClass('show').css('display', '');
+        });
+
+        $filterList.removeClass('champion-list-filter__type__item--active');
+        $(this).addClass('champion-list-filter__type__item--active');
+
+        $itemList.each(function (index, item) {
+            if (filterType === "ALL") {
+                $(item).css('display', '');
+                return;
+            }
+
+            if ($(item).hasClass(itemClass + '--' + filterType)) {
+                $(item).css('display', '');
+            } else {
+                $(item).css('display', 'none');
+            }
+        });
+    });
+    $('.champion-list-filter__keyword input').on('keyup keydown change', function () {
+        var chosungSplit = function (keyword) {
+            var doubleChosungArray = {
+                'ㄳ': 'ㄱㅅ',
+                'ㄵ': 'ㄴㅈ',
+                'ㄶ': 'ㄴㅎ',
+                'ㄺ': 'ㄹㄱ',
+                'ㄻ': 'ㄹㅁ',
+                'ㄼ': 'ㄹㅂ',
+                'ㄽ': 'ㄹㅅ',
+                'ㄾ': 'ㄹㅌ',
+                'ㄿ': 'ㄹㅍ',
+                'ㅀ': 'ㄹㅎ',
+                'ㅄ': 'ㅂㅅ'
+            };
+            for (var doubleChosung in doubleChosungArray) {
+                if (doubleChosungArray.hasOwnProperty(doubleChosung)) {
+                    var spritedChosung = doubleChosungArray[doubleChosung];
+                    keyword = keyword.replaceAll(doubleChosung, spritedChosung);
+                }
+            }
+            return keyword;
+        },
+            keyword = $(this).val().toLowerCase().replace(/[~!#$^&*=+|:;?"<,.>'\s]/g, ''),
+            $championList = $('.champion-index__champion-item');
+
+        keyword = chosungSplit(keyword);
+
+        $championList.each(function (i, o) {
+            var championName = $(o).data('champion-name'),
+                championKey = $(o).data('champion-key'),
+                championNameChosung = $(o).data('champion-name-chosung');
+
+            if (championName.indexOf(keyword) >= 0 || championKey.indexOf(keyword) >= 0 || (championNameChosung && championNameChosung.indexOf(keyword) >= 0)) {
+                $(o).removeClass('hide');
+                $(o).addClass('show');
+            } else {
+                $(o).removeClass('show');
+                $(o).addClass('hide');
+            }
+        });
+    });
+
 // $("#champion_Input").keyup(function () {
 //     for (let i = 0; i < champion_Data.length; i++) {
 //         let chosung_Cnt = 0;
