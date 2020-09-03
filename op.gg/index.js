@@ -61,115 +61,121 @@ const champion_Data = document.querySelectorAll(".champion_Box");
 const champion_Input = document.querySelector("#champion_Input");
 $("#champion_Input").keyup(function () {
     for (let i = 0; i < champion_Data.length; i++) {
-        let name_Cnt = 0;
-        for (let j = 0; j < champion_Data[i].dataset.championName.length; j++) {
-            console.log(champion_Input.value)
-            if (champion_Data[i].dataset.championName.charAt(j) == champion_Input.value) {
-                name_Cnt++;
-                continue;
-            }
-        }
-        let chosung_Cnt = 0;
-        for (let k = 0; k < champion_Data[i].dataset.championNameChosung.length; k++) {
-            console.log(champion_Input.value)
-            if (champion_Data[i].dataset.championNameChosung.charAt(k) == champion_Input.value) {
-                chosung_Cnt++;
-                continue;
-            }
-        }
-        if (chosung_Cnt > 0 || name_Cnt > 0) {
-            champion_Data[i].style.display = "block";
-        }
-        // if (name_Cnt > 0) {
+        // let name_Cnt = 0;
+        // for (let j = 0; j < champion_Data[i].dataset.championName.length; j++) {
+        //     console.log(champion_Input.value)
+        //     if (champion_Data[i].dataset.championName.charAt(j) == champion_Input.value) {
+        //         name_Cnt++;
+        //         continue;
+        //     }
+        // }
+        // let chosung_Cnt = 0;
+        // for (let k = 0; k < champion_Data[i].dataset.championNameChosung.length; k++) {
+        //     console.log(champion_Input.value)
+        //     if (champion_Data[i].dataset.championNameChosung.charAt(k) == champion_Input.value) {
+        //         chosung_Cnt++;
+        //         continue;
+        //     }
+        // }
+        // if (chosung_Cnt > 0 || name_Cnt > 0) {
         //     champion_Data[i].style.display = "block";
         // }
-        else {
-            champion_Data[i].style.display = "none";
-        }
-        if (champion_Data[i].dataset.championName === champion_Input.value || champion_Data[i].dataset.championNameChosung === champion_Input.value) {
-            // console.log( $("#champion_Input").val());
-            champion_Data[i].style.display = "block";
-        }
+        // // if (name_Cnt > 0) {
+        // //     champion_Data[i].style.display = "block";
+        // // }
+        // else {
+        //     champion_Data[i].style.display = "none";
+        // }
+        // if (champion_Data[i].dataset.championName === champion_Input.value || champion_Data[i].dataset.championNameChosung === champion_Input.value) {
+        //     // console.log( $("#champion_Input").val());
+        //     champion_Data[i].style.display = "block";
+        // }
 
-        if (champion_Input.value == "") {
-            for (let j = 0; j < champion_Data.length; j++) {
-                champion_Data[j].style.display = "block";
-            }
+        // if (champion_Input.value == "") {
+        //     for (let j = 0; j < champion_Data.length; j++) {
+        //         champion_Data[j].style.display = "block";
+        //     }
+        // }
+        if(champion_Data[i].dataset.championName.indexOf(champion_Input.value)>= 0 || champion_Data[i].dataset.championNameChosung.indexOf(champion_Input.value)>= 0){
+            champion_Data[i].style.display ="block";
+        }
+        else{
+            champion_Data[i].style.display = "none";
         }
     }
 })
 
-$(function () {
-    $(".champion-list-filter__type").on('click', '.champion-list-filter__type__item', function () {
-        var $filterList = $(this).closest('.champion-list-filter__type').find('.champion-list-filter__type__item'),
-            filterType = $(this).data("filter-type"),
-            $itemList = $(".champion-index__champion-item"),
-            itemClass = "champion-index__champion-item";
+// $(function () {
+//     $(".champion-list-filter__type").on('click', '.champion-list-filter__type__item', function () {
+//         var $filterList = $(this).closest('.champion-list-filter__type').find('.champion-list-filter__type__item'),
+//             filterType = $(this).data("filter-type"),
+//             $itemList = $(".champion-index__champion-item"),
+//             itemClass = "champion-index__champion-item";
 
-        // 탭 이동 시 초기화
-        $(".champion-list-filter__keyword input").val("");
-        $itemList.each(function (index, item) {
-            $(item).removeClass('hide').addClass('show').css('display', '');
-        });
+//         // 탭 이동 시 초기화
+//         $(".champion-list-filter__keyword input").val("");
+//         $itemList.each(function (index, item) {
+//             $(item).removeClass('hide').addClass('show').css('display', '');
+//         });
 
-        $filterList.removeClass('champion-list-filter__type__item--active');
-        $(this).addClass('champion-list-filter__type__item--active');
+//         $filterList.removeClass('champion-list-filter__type__item--active');
+//         $(this).addClass('champion-list-filter__type__item--active');
 
-        $itemList.each(function (index, item) {
-            if (filterType === "ALL") {
-                $(item).css('display', '');
-                return;
-            }
+//         $itemList.each(function (index, item) {
+//             if (filterType === "ALL") {
+//                 $(item).css('display', '');
+//                 return;
+//             }
 
-            if ($(item).hasClass(itemClass + '--' + filterType)) {
-                $(item).css('display', '');
-            } else {
-                $(item).css('display', 'none');
-            }
-        });
-    });
-    $('.champion-list-filter__keyword input').on('keyup keydown change', function () {
-        var chosungSplit = function (keyword) {
-            var doubleChosungArray = {
-                'ㄳ': 'ㄱㅅ',
-                'ㄵ': 'ㄴㅈ',
-                'ㄶ': 'ㄴㅎ',
-                'ㄺ': 'ㄹㄱ',
-                'ㄻ': 'ㄹㅁ',
-                'ㄼ': 'ㄹㅂ',
-                'ㄽ': 'ㄹㅅ',
-                'ㄾ': 'ㄹㅌ',
-                'ㄿ': 'ㄹㅍ',
-                'ㅀ': 'ㄹㅎ',
-                'ㅄ': 'ㅂㅅ'  
-            };
-            for (var doubleChosung in doubleChosungArray) {
-                if (doubleChosungArray.hasOwnProperty(doubleChosung)) {
-                    var spritedChosung = doubleChosungArray[doubleChosung];
-                    keyword = keyword.replaceAll(doubleChosung, spritedChosung);
-                }
-            }
-            return keyword;
-        },//동시입력 초기화
-            keyword = $(this).val().toLowerCase().replace(/[~!#$^&*=+|:;?"<,.>'\s]/g, ''),
-            $championList = $('.champion-index__champion-item');
+//             if ($(item).hasClass(itemClass + '--' + filterType)) {
+//                 $(item).css('display', '');
+//             } else {
+//                 $(item).css('display', 'none');
+//             }
+//         });
+//     });
 
-        keyword = chosungSplit(keyword);
+//     $('.champion-list-filter__keyword input').on('keyup keydown change', function () {
+//         var chosungSplit = function (keyword) {
+//             var doubleChosungArray = {
+//                 'ㄳ': 'ㄱㅅ',
+//                 'ㄵ': 'ㄴㅈ',
+//                 'ㄶ': 'ㄴㅎ',
+//                 'ㄺ': 'ㄹㄱ',
+//                 'ㄻ': 'ㄹㅁ',
+//                 'ㄼ': 'ㄹㅂ',
+//                 'ㄽ': 'ㄹㅅ',
+//                 'ㄾ': 'ㄹㅌ',
+//                 'ㄿ': 'ㄹㅍ',
+//                 'ㅀ': 'ㄹㅎ',
+//                 'ㅄ': 'ㅂㅅ'  
+//             };
+//             for (var doubleChosung in doubleChosungArray) {
+//                 if (doubleChosungArray.hasOwnProperty(doubleChosung)) {
+//                     var spritedChosung = doubleChosungArray[doubleChosung];
+//                     keyword = keyword.replaceAll(doubleChosung, spritedChosung);
+//                 }
+//             }
+//             return keyword;
+//         },//동시입력 초기화
+//             keyword = $(this).val().toLowerCase().replace(/[~!#$^&*=+|:;?"<,.>'\s]/g, ''),
+//             $championList = $('.champion-index__champion-item');
 
-        $championList.each(function (i, o) {
-            var championName = $(o).data('champion-name'),
-                championKey = $(o).data('champion-key'),
-                championNameChosung = $(o).data('champion-name-chosung'); //각 챔피언 데이터 변수
+//         keyword = chosungSplit(keyword);
+    // var keyword = document.querySelector("#champion_Input").value;
+    //     $championList.each(function (i, o) {
+    //         var championName = $(o).data('champion-name'),
+    //             championNameChosung = $(o).data('champion-name-chosung'); //각 챔피언 데이터 변수
 
-            if (championName.indexOf(keyword) >= 0 || championKey.indexOf(keyword) >= 0 || (championNameChosung && championNameChosung.indexOf(keyword) >= 0)) {
-                $(o).removeClass('hide');
-                $(o).addClass('show');
-            } else {
-                $(o).removeClass('show');
-                $(o).addClass('hide');
-            } //검색 결과에 따라 챔피언 목록을 보여주는 부분
-        });
-    });
+    //         if (championName.indexOf(keyword) >= 0 || (championNameChosung && championNameChosung.indexOf(keyword) >= 0)) {
+    //             $(o).removeClass('hide');
+    //             $(o).addClass('show');
+    //         } else {
+    //             $(o).removeClass('show');
+    //             $(o).addClass('hide');
+    //         } //검색 결과에 따라 챔피언 목록을 보여주는 부분
+    //     });
+    // });
 
 // $("#champion_Input").keyup(function () {
 //     for (let i = 0; i < champion_Data.length; i++) {
