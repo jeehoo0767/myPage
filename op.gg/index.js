@@ -1,6 +1,7 @@
 const name = document.querySelector("#name");
 const btn = document.querySelector("#btn");
 const form = document.querySelector("form");
+
 btn.addEventListener("click", function () {
     form.submit();
 })
@@ -56,11 +57,42 @@ setInterval(slide, 2000);
 //slide함수
 
 //검색기능구현
+// const champion_Data = document.querySelectorAll(".champion_Box");
+// const champion_Input = document.querySelector("#champion_Input");
+// champion_Input.addEventListener('keyup', function () {
+//     $.each(champion_Data, function (i, v) {
+//         if (v.dataset.championName.indexOf(champion_Input.value) >= 0 || v.dataset.championNameChosung.indexOf(champion_Input.value) >= 0) {
+//             v.classList.remove("hide");
+//             v.classList.add("show");
+//         }
+//         else {
+//             v.classList.remove("show");
+//             v.classList.add("hide");
+//         }
+//     })
+// })
+
 
 const champion_Data = document.querySelectorAll(".champion_Box");
 const champion_Input = document.querySelector("#champion_Input");
-$("#champion_Input").keyup(function () {
-    for (let i = 0; i < champion_Data.length; i++) {
+$("#champion_Input").keyup(function (event) {
+    $.each(champion_Data, function(i, v){
+        if(v.dataset.championName.indexOf(champion_Input.value)>=0 || v.dataset.championNameChosung.indexOf(champion_Input.value)>=0){
+            v.classList.remove("hide");
+            v.classList.add("show");
+        }
+        else{
+            v.classList.remove("show");
+            v.classList.add("hide");
+        }
+    })
+})
+
+
+// const champion_Data = document.querySelectorAll(".champion_Box");
+// const champion_Input = document.querySelector("#champion_Input");
+// $("#champion_Input").keyup(function () {
+//     for (let i = 0; i < champion_Data.length; i++) {
         // let name_Cnt = 0;
         // for (let j = 0; j < champion_Data[i].dataset.championName.length; j++) {
         //     console.log(champion_Input.value)
@@ -96,14 +128,16 @@ $("#champion_Input").keyup(function () {
         //         champion_Data[j].style.display = "block";
         //     }
         // }
-        if(champion_Data[i].dataset.championName.indexOf(champion_Input.value)>= 0 || champion_Data[i].dataset.championNameChosung.indexOf(champion_Input.value)>= 0){
-            champion_Data[i].style.display ="block";
-        }
-        else{
-            champion_Data[i].style.display = "none";
-        }
-    }
-})
+//         if(champion_Data[i].dataset.championName.indexOf(champion_Input.value)>= 0 || champion_Data[i].dataset.championNameChosung.indexOf(champion_Input.value)>= 0){
+//             champion_Data[i].classList.remove("hide");
+//             champion_Data[i].classList.add("show");
+//         }
+//         else{
+//             champion_Data[i].classList.remove("show");
+//             champion_Data[i].classList.add("hide");
+//         }
+//     }
+// })
 
 // $(function () {
 //     $(".champion-list-filter__type").on('click', '.champion-list-filter__type__item', function () {
