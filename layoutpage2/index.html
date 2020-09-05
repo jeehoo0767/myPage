@@ -224,8 +224,19 @@
             );
         }
 
-        $(".next_btn").click(fnSlide)
-    </script>
+        $(".main_menu>li").on("focusin mouseover", function(e){
+            $(this).children("a").css({"background" : "#19a956", 
+                                                    "color" : "white"});
+            $(this).children("ul").stop().slideDown(500);
+        });
+
+        $(".main_menu>li").on("focusout mouseout", function(e){
+            $(this).children("a").css({"background" : "white", 
+                                                    "color" : "#666"});
+            $(this).children("ul").stop().slideUp(500);     
+        });
+
+    </script>   
 </body>
 
 </html>

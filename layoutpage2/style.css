@@ -52,19 +52,30 @@ nav .main_menu>li:first-child >a{
     border-left: 1px solid rgb(209, 207, 207);
 }
 
+
 nav>ul{
     display:flex;
 }
 
 .sub_menu{
-    border: 1px solid rgb(209, 207, 207);
+    /* border: 1px solid rgb(209, 207, 207); */
     border-left: none;
     border-top:none;
     display:none;
+    position: absolute;
+    z-index: 200;
+}
+
+.sub_menu li{
+    background: rgb(218, 245, 231);
+}
+
+.sub_menu li>a{
+    color:#666;
 }
 
 .first_sub{
-    border-left: 1px solid rgb(209, 207, 207);
+    /* border-left: 1px solid rgb(209, 207, 207); */
 }
 
 .slider{
