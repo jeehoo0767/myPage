@@ -142,7 +142,6 @@ nav>ul{
 .prev_btn{
     left: 100px;
     top: 280px;
-    z-index: 20;
 }
 
 .next_btn{
@@ -216,6 +215,7 @@ aside{
     width: 440px;
     padding: 20px 20px 20px 0;
     display:flex;
+    cursor: pointer;
 }
 
 .date_area{
@@ -264,4 +264,39 @@ aside{
 .aside_gallery{
     margin-top: 10px;
     text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#modal {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+
+    font-weight: bold;
+
+}
+.modal-overlay{
+    width: 100%;
+    height: 1200px;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content{
+     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px;
+    z-index: 5000;
+    border:1px solid #000;
+    font-weight: bold;
 }

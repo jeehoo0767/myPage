@@ -46,3 +46,20 @@ setInterval(fnSlide, 3000);
             $(".notice").removeClass("select");
             $(".notice").addClass("none_select");
         });
+
+        function openmodal() {
+            document.querySelector("#modal").classList.remove("hidden");
+        }
+
+        function closemodal() {
+            document.querySelector("#modal").classList.add("hidden");
+
+        }
+
+        const modal_content = document.querySelectorAll(".section_content");
+        
+        for(let i = 0; i<modal_content.length; i++){
+            modal_content[i].addEventListener("click", openmodal);
+        }
+
+        document.querySelector(".modal-overlay").addEventListener("click", closemodal);
