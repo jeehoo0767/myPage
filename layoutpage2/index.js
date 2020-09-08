@@ -1,6 +1,6 @@
 let timeId = null;
 
-timeId = setInterval(fnSlide, 1000);
+timeId = setInterval(fnSlide, 3000);
 
 $(".prev_btn, .next_btn").mouseover(function () {
     console.log("중지!");
@@ -9,7 +9,7 @@ $(".prev_btn, .next_btn").mouseover(function () {
 
 $(".prev_btn, .next_btn").mouseout(function () {
     console.log("시작!");
-    timeId = setInterval(fnSlide, 1000);
+    timeId = setInterval(fnSlide, 3000);
 })
 
 
@@ -50,7 +50,7 @@ $(".next_btn").click(function () {
         function () {
             // 슬라이드 셔틀 프레임 원위치
             $(this).css({
-                "margin-left": "0"
+                "margin-left": "-295px"
             });
             $(first).remove();
             // 첫 번째 항목 뒤로 이동
