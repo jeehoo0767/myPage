@@ -157,7 +157,7 @@ section{
 aside{
     width: 457px;
     height: 350px;
-    padding: 10px;
+    padding: 20px;
     background: white;
     border-radius: 10px;
 }
@@ -191,19 +191,26 @@ aside{
 }
 
 .section_flex_box{
+    width:900px;
+    margin-top: 10px;
     display:flex;
     flex-wrap: wrap;
 }
 
+.section_notice{
+    margin-left: 5px;
+}
+
 .section_content{
-    padding: 20px;
+    width: 440px;
+    padding: 20px 20px 20px 0;
     display:flex;
 }
 
 .date_area{
-    width: 83px;
+    width: 150px;
     height: 83px;
-    border-radius: 40px;
+    border-radius: 50px;
     background: rgb(230, 230, 230);
 }
 
@@ -222,5 +229,28 @@ aside{
 
 .notice_title{
     font-weight: bold;
-    font-size: 19px;
+    font-size: 18px;
+}
+
+.notice_content{
+    margin-top: 10px;
+    font-size: 14px;
+    color:rgb(92, 92, 92);
+    font-weight: bold;
+}
+
+.aside_header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aside_header_title{
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.aside_gallery{
+    margin-top: 10px;
+    text-align: center;
 }
