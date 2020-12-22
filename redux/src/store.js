@@ -1,7 +1,6 @@
-import { createStore } from 'redux';
 
-createStore((state, action) => {
-    return state
-})
+const reducer = (state, action) => {
+    return state;
+}
 
-export default createStore
+export default reducer
