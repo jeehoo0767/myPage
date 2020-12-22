@@ -1,14 +1,9 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {useSelector} from 'react-redux';
 
 function DisplayNumber(props) {
 
-    const [number, setnumber] = useState()
     const selectNumber = useSelector(state => state.number);
-
-    useEffect(() => {
-        setnumber(selectNumber);
-    }, [])
 
     return (
         <div>
