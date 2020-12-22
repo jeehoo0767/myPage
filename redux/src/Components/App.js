@@ -15,7 +15,7 @@ function App(props) {
         <AddNumberRoot onClick={function(size){
           setnumber(number + size);
         }}/>
-        <DisplayNumberRoot number={number}/>
+        <DisplayNumberRoot />
       </div>
     </div>
   )

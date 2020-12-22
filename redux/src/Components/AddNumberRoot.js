@@ -4,9 +4,7 @@ function AddNumberRoot(props) {
     return (
         <div>
             <h1>AddNumberRoot</h1>
-            <AddNumber onClick={function(size){
-                props.onClick(size)
-            }}/>
+            <AddNumber />
         </div>
     )
 }

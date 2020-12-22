@@ -5,7 +5,7 @@ function AddNumber(props) {
 
     const [size, setsize] = useState(1)
 
-    const {dispatch} = useDispatch();
+    const dispatch = useDispatch();
 
     return (
         <div>
