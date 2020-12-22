@@ -1,10 +1,12 @@
 import React from 'react'
 import AddNumber from './AddNumber'
-function AddNumberRoot() {
+function AddNumberRoot(props) {
     return (
         <div>
             <h1>AddNumberRoot</h1>
-            <AddNumber />
+            <AddNumber onClick={function(size){
+                props.onClick(size)
+            }}/>
         </div>
     )
 }

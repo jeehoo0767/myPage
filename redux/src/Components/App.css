@@ -5,3 +5,12 @@ div {
     color : #764abc;
     padding: 10px;
 }
+
+.flex_box {
+    display: flex;
+    justify-content: center;
+}
+
+.flex_box>div{
+    width: 50%;
+}
