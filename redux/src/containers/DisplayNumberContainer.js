@@ -1,7 +1,14 @@
 import DisplayNumber from '../Components/DisplayNumber'
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 
-export default connect()(DisplayNumber);
+const mapReduxStateToReactProps = (state) => {
+    console.log(state.number)
+    return {
+        number : state.number
+    }
+}
+
+export default connect(mapReduxStateToReactProps)(DisplayNumber);
 
 
 // import React, {useState} from 'react'
