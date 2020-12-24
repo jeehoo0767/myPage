@@ -1,17 +1,18 @@
-import React, {useState} from 'react'
 import AddNumber from '../Components/AddNumber'
-import {useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
 
-function AddNumberContainer() {
-    const dispatch = useDispatch();
-    const [size, setsize] = useState(1);
-    const handleClick = (size) => {
-        dispatch({type : 'INCREMENT', size:size})
-    }
+export default connect()(AddNumber)
 
-    return (
-        <AddNumber onClick={handleClick}/>
-    )
-}
+// function AddNumberContainer() {
+//     const dispatch = useDispatch();
+//     const [size, setsize] = useState(1);
+//     const handleClick = (size) => {
+//         dispatch({type : 'INCREMENT', size:size})
+//     }
 
-export default AddNumberContainer
+//     return (
+//         <AddNumber onClick={handleClick}/>
+//     )
+// }
+
+// export default AddNumberContainer
