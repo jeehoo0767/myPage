@@ -4,6 +4,11 @@ import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
+
+  const onClick = (name : string) => {
+    console.log(`${name} says hello`)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,7 +25,7 @@ const App: React.FC = () => {
           Learn React
         </a>
       </header>
-      <Greetings name='박지후' mark='오동' />
+      <Greetings name='박지후' mark='오동' onClick = {onClick}/>
     </div>
   );
 }
