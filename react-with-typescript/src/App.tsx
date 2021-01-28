@@ -1,5 +1,6 @@
 import React from 'react';
 import Greetings from './Greetings'
+import Counter from './Counter'
 import logo from './logo.svg';
 import './App.css';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         </a>
       </header>
       <Greetings name='박지후' mark='오동' onClick = {onClick}/>
+      <Counter />
     </div>
   );
 }
