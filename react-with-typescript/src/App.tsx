@@ -2,6 +2,7 @@ import React from 'react';
 import Greetings from './Greetings'
 import Counter from './Counter'
 import Form from './Form'
+import ReducerSample from './ReducerSample'
 import logo from './logo.svg';
 import './App.css';
 
@@ -34,6 +35,7 @@ const App: React.FC = () => {
       <Greetings name='박지후' mark='오동' onClick = {onClick}/>
       <Counter />
       <Form onSubmit = {onSubmit}/>
+      <ReducerSample /> 
     </div>
   );
 }
