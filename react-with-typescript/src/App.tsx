@@ -1,6 +1,7 @@
 import React from 'react';
 import Greetings from './Greetings'
 import Counter from './Counter'
+import Form from './Form'
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,6 +9,10 @@ const App: React.FC = () => {
 
   const onClick = (name : string) => {
     console.log(`${name} says hello`)
+  }
+
+  const onSubmit = (form : {name : string; description : string}) => {
+    console.log(form);
   }
 
   return (
@@ -28,6 +33,7 @@ const App: React.FC = () => {
       </header>
       <Greetings name='박지후' mark='오동' onClick = {onClick}/>
       <Counter />
+      <Form onSubmit = {onSubmit}/>
     </div>
   );
 }
