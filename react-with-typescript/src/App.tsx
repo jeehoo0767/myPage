@@ -2,8 +2,8 @@ import React from 'react';
 import Greetings from './Greetings'
 import Counter from './Counter'
 import Form from './Form'
-import ReducerSample from './ReducerSample'
-import {SampleProvider} from './SampleContext'
+import ReducerSample from './ReducerSample';
+import { SampleProvider } from './SampleContext';
 import logo from './logo.svg';
 import './App.css';
 
