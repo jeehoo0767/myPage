@@ -14,7 +14,8 @@ function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
   };
   const removeStyle: CSSProperties = {
     marginLeft: 8,
-    color: 'red'
+    color: 'red',
+    cursor : 'pointer'
   };
 
   const handleToggle = () => {
