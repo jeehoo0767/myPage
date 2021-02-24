@@ -4,9 +4,9 @@ import Footer from "../pages/src/component/Footer";
 import Top from "../pages/src/component/Top";
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <div style={{ width: "1000px", margin: "0 auto" }}>
       <Top />
-      {/* <Component {...pageProps} /> */}
+      <Component {...pageProps} />
       <Footer />
     </div>
   );
