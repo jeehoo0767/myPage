@@ -3,22 +3,24 @@ import styles from "./ItemList.module.css";
 export default function ItemList(props) {
   return (
     <div>
-      <Grid columns={3} divided>
+      <Grid columns={3}>
         <Grid.Row>
-          {props.list.map((item) => {
-            return (
+          {props.list.map((item) => (
+            <Grid.Column key={item.id}>
               <div className={styles.wrap}>
-                <Grid.Column>
-                  <img src={item.image_link} alt={item.name} />
-                  <strong className={styles.tit_item}>{item.name}</strong>
-                  <span className={styles.txt_info}>
-                    {item.category} {item.product_type}
-                  </span>
-                  <strong className={styles.num_price}>${item.price}</strong>
-                </Grid.Column>
+                <img
+                  src={item.image_link}
+                  alt={item.name}
+                  className={styles.img_item}
+                />
+                <strong className={styles.tit_item}>{item.name}</strong>
+                <span className={styles.txt_info}>
+                  {item.category} {item.product_type}
+                </span>
+                <strong className={styles.num_price}>${item.price}</strong>
               </div>
-            );
-          })}
+            </Grid.Column>
+          ))}
         </Grid.Row>
       </Grid>
     </div>

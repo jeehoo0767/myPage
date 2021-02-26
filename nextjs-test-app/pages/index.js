@@ -15,6 +15,7 @@ export default function Home() {
       setList(response.data);
     });
   };
+
   useEffect(() => {
     getData();
   }, []);
