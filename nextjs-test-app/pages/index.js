@@ -25,6 +25,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>HOME | 박지후</title>
+        <meta name="description" content="박지후 입니다" />
       </Head>
       {isLoading && (
         <div style={{ padding: "300px 0" }}>
