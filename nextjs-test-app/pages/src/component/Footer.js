@@ -1,3 +1,14 @@
 export default function Footer() {
-  return <div>Copyrigt &copy; 박지후. All rights reserved.</div>;
+  return (
+    <div
+      style={{
+        marginTop: 40,
+        padding: "40px 0",
+        borderTop: "1px solid #999",
+        textAlign: "center",
+      }}
+    >
+      Copyright © 지후팍. All rights reserved.
+    </div>
+  );
 }
