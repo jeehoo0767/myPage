@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import ItemList from "../pages/src/component/ItemList";
+import ItemList from "../src/component/ItemList";
 import { Header, Divider, Loader } from "semantic-ui-react";
 
 export default function Home() {

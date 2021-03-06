@@ -1,5 +1,5 @@
 import { Header } from "semantic-ui-react";
-import Gnb from "../component/Gnb";
+import Gnb from "./Gnb";
 export default function Top() {
   return (
     <div>

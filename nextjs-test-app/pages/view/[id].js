@@ -1,5 +1,5 @@
 import Axios from "axios";
-import Item from "../src/component/Item";
+import Item from "../../src/component/Item";
 import Head from "next/head";
 
 const Post = ({ item }) => {
