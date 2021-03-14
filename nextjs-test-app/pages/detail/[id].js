@@ -1,8 +1,22 @@
 import Axios from "axios";
 import Head from "next/head";
 import Item from "../../src/component/Item";
-
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react
+import { useRouter } from "next/router";
 const Post = ({ item, name }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      <div style={{ padding: "100px 0" }}>
+         <Segment>
+            <Dimmer active>https://github.com/Semantic-Org/Semantic-UI-React/edit/master/docs/src/examples/elements/Loader/Types/LoaderExampleLoader.js?message=docs(LoaderExampleLoader):%20your%20description
+              <Loader />
+            </Dimmer>
+            <Image src='/images/wireframe/short-paragraph.png' />
+          </Segment>
+      </div>
+    );
+  }
   return (
     <>
       {item && (
