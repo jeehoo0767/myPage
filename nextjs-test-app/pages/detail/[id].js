@@ -1,22 +1,23 @@
 import Axios from "axios";
 import Head from "next/head";
-import Item from "../../src/component/Item";
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Dimmer, Loader } from "semantic-ui-react";
+import Item from "../../src/component/Item";
+
 const Post = ({ item, name }) => {
   const router = useRouter();
+
   if (router.isFallback) {
     return (
       <div style={{ padding: "100px 0" }}>
-         <Segment>
-            <Dimmer active>https://github.com/Semantic-Org/Semantic-UI-React/edit/master/docs/src/examples/elements/Loader/Types/LoaderExampleLoader.js?message=docs(LoaderExampleLoader):%20your%20description
-              <Loader />
-            </Dimmer>
-            <Image src='/images/wireframe/short-paragraph.png' />
-          </Segment>
+        <Loader active inline="centered">
+          Loading
+        </Loader>
       </div>
     );
   }
+
   return (
     <>
       {item && (
@@ -36,12 +37,16 @@ const Post = ({ item, name }) => {
 export default Post;
 
 export async function getStaticPaths() {
+  const apiUrl = process.env.apiUrl;
+  const res = await Axios.get(apiUrl);
+  const data = res.data;
+
   return {
-    paths: [
-      { params: { id: "740" } },
-      { params: { id: "730" } },
-      { params: { id: "729" } },
-    ],
+    paths: data.slice(0, 9).map((item) => ({
+      params: {
+        id: item.id.toString(),
+      },
+    })),
     fallback: true,
   };
 }
