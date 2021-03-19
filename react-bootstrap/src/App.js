@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import ItemList from "./ItemList";
 function App() {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    Axios.get(
+      "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
+    ).then((response) => {
+      if (response.data) {
+        console.log(response.data);
+        setList(response.data);
+      } else {
+        alert("데이터 가져오기 실패");
+      }
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3 style={{ paddingTop: 40 }}>베스트 상품</h3>
+      <hr />
+      <ItemList list={list.slice(0, 9)} />
+      <h3 style={{ paddingTop: 40 }}>신상품</h3>
+      <hr />
+      <ItemList list={list.slice(9)} />
     </div>
   );
 }
