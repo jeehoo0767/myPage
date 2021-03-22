@@ -4,15 +4,37 @@ function ItemList(props) {
   return (
     <div>
        <Container>
-          <Row xs="2" md="6" lg="5"> 
-            <Col style={{background : '#E5EDF5'}}>Column</Col>
-            <Col>Column</Col>
-            <Col>Column</Col>
-            <Col>Column</Col>
-            <Col>Column</Col>
-            <Col>Column</Col>
-          </Row>
-      </Container>
+      <Row xs="2">
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+      </Row>
+      <Row xs="3">
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+      </Row>
+      <Row xs="4">
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+      </Row>
+      <Row xs="4">
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col xs="6">Column</Col>
+        <Col>Column</Col>
+      </Row>
+      <Row xs="1" sm="2" md="4">
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+        <Col>Column</Col>
+      </Row>
+    </Container>
       {/* <Grid columns={3}>
         <Grid.Row>
           {list.map((item) => (
