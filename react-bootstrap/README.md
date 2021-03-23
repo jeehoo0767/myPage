@@ -1,1 +1,1 @@
-react-bootstrap 개인실습 디렉토리
+react-bootstrap 개인실습 디렉토리.
