@@ -15,6 +15,7 @@ function ItemList(props) {
                 <span className={styles.txt_info}>
                   {item.category} {item.product_type}
                 </span>
+                <strong className={styles.num_price}>${item.price}</strong>
               </div>
             </Col>
           })}
