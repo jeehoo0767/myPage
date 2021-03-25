@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 function ItemList(props) {
   const {list} = props;
@@ -8,7 +9,9 @@ function ItemList(props) {
         <Row xs="3">
           {list.map((item) => {
             <Col key={item.id}>
-              
+              <div className={StyleSheet.wrap}>
+                <img src={item.image_link} alt={item.name} className={StyleSheet.img_item}/>
+              </div>
             </Col>
           })}
         </Row>
