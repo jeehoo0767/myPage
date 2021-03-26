@@ -9,18 +9,22 @@ function ItemList(props) {
         <Row xs="3">
           {list.map((item) => {
             <Col key={item.id}>
-              <div className={StyleSheet.wrap}>
-                <img
-                  src={item.image_link}
-                  alt={item.name}
-                  className={StyleSheet.img_item}
-                />
-                <strong className={StyleSheet.tit_item}>{item.name}</strong>
-                <span className={styles.txt_info}>
-                  {item.category} {item.product_type}
-                </span>
-                <strong className={styles.num_price}>${item.price}</strong>
-              </div>
+              <Link href="/detail/[id]" as={`/detail/${item.id}`}>
+                <a>
+                  <div className={StyleSheet.wrap}>
+                    <img
+                      src={item.image_link}
+                      alt={item.name}
+                      className={StyleSheet.img_item}
+                    />
+                    <strong className={StyleSheet.tit_item}>{item.name}</strong>
+                    <span className={styles.txt_info}>
+                      {item.category} {item.product_type}
+                    </span>
+                    <strong className={styles.num_price}>${item.price}</strong>
+                  </div>
+                </a>
+              </Link>
             </Col>;
           })}
         </Row>
