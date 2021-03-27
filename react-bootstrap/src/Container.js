@@ -1,12 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Container from './Container';
-import { Switch, Route } from 'react-router-dom';
+import ItemList from './ItemList';
+import styles from './ItemList.module.css';
+function Container() {
+  const [list, setList] = useState([]);
 
-function App() {
-  return <Container />;
-  {
-    /* <Grid columns={3}>
+  useEffect(() => {
+    Axios.get(
+      'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline',
+    ).then((response) => {
+      if (response.data) {
+        console.log(response.data);
+        setList(response.data);
+      } else {
+        alert('데이터 가져오기 실패');
+      }
+    });
+  }, []);
+  return (
+    <div>
+      <h3 style={{ paddingTop: 40 }}>베스트 상품</h3>
+      <hr />
+      <ItemList list={list.slice(0, 9)} />
+      <h3 style={{ paddingTop: 40 }}>신상품</h3>
+      <hr />
+      <ItemList list={list.slice(9)} />
+    </div>
+  );
+}
+
+{
+  /* <Grid columns={3}>
         <Grid.Row>
           {list.map((item) => (
             <Grid.Column key={item.id}>
@@ -30,6 +54,5 @@ function App() {
           ))}
         </Grid.Row>
       </Grid> */
-  }
 }
-export default App;
+export default Container;
