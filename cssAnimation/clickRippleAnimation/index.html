@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <button id="btn1">Click</button>
+    </div>
+
+    <script>
+      const btn = document.getElementById("btn1");
+
+      function click(e) {
+        // 버튼의 폭, 넓이, left, top 기준 x, y
+        const { width, height, x, y } = btn.getBoundingClientRect();
+
+        // 버튼의 대각선 길이
+        const radius = Math.sqrt(width * width + height * height);
+
+        // 버튼의 대각선 길이 * 2 만큼을 방울의 지름으로 초기화
+        btn.style.setProperty("--diameter", `${radius * 2}px`);
+
+        const { clientX, clientY } = e;
+
+        // 클릭 시 생성되는 물방울의 좌표값. 원의 중앙을 해당 좌표값으로 설정
+        // 클릭된 지점의 위치에서 버튼의 왼쪽 마진을 빼주고 버튼의 길이만큼 나눈 후 100을 곱해주면
+        // 버튼에 대한 상대적 클릭된 좌표를 구할 수 있음.
+        // radius를 빼주는 이유는 안빼주면 클릭 시 원이 왼쪽 위부터 그려지면서 원이 안보임.
+        // 버튼에 대해 클릭된 상대적인 위치에서 버튼의 대각선길이만큼 좌표를 이동
+        const left = ((clientX - x - radius) / width) * 100 + "%";
+        const top = ((clientY - y - radius) / height) * 100 + "%";
+
+        btn.style.setProperty("--top", top);
+        btn.style.setProperty("--left", left);
+
+        // 클릭 이벤트 실행 시 --a 초기화
+        btn.style.setProperty("--a", "");
+
+        // 이후 바로 animation 등로ㅓㄱ
+        setTimeout(() => {
+          btn.style.setProperty("--a", "ripple-effect 500ms linear");
+        });
+      }
+
+      btn.addEventListener("click", click);
+    </script>
+  </body>
+</html>
