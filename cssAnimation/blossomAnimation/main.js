@@ -10,8 +10,13 @@ const petalImg = new Image();
 petalImg.src = "./petal.png";
 petalImg.onload = () => {
   for (let i = 0; i < TOTAL; i++) {
-    petalArray.push(new Petal());
+    petalArray.push(new Petal(i));
   }
+  petalArray.forEach((item) => {
+    window.addEventListener("mousemove", (e) => {
+      item.mouseMove();
+    });
+  });
   render();
 };
 
@@ -29,7 +34,8 @@ window.addEventListener("resize", () => {
 });
 
 class Petal {
-  constructor() {
+  constructor(index) {
+    this.index = index;
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height * 2 - canvas.height;
     this.w = 30 + Math.random() * 15;
@@ -59,10 +65,16 @@ class Petal {
     );
   }
 
+  mouseMove(mx, my) {
+    this.x += 1.5;
+    this.y += 1.5;
+  }
+
   animate() {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
     this.draw();
     this.flip += this.flipSpeed;
+    // console.log(this.x, this.y);
   }
 }
