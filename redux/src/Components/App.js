@@ -3,6 +3,7 @@ import "./App.css";
 import AddNumberRoot from "./AddNumberRoot";
 import DisplayNumberRoot from "./DisplayNumberRoot";
 import Info from "./Info";
+import Profile from "./Profile";
 function App(props) {
   const [number, setnumber] = useState(0);
 
@@ -18,6 +19,7 @@ function App(props) {
         <DisplayNumberRoot />
       </div>
       <Info location="korea" />
+      <Profile username="Jihu Park" name="(박지후)" />
     </div>
   );
 }
