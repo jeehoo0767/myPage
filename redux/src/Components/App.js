@@ -4,6 +4,7 @@ import AddNumberRoot from "./AddNumberRoot";
 import DisplayNumberRoot from "./DisplayNumberRoot";
 import Info from "./Info";
 import Profile from "./Profile";
+import Graph from "./Graph";
 function App(props) {
   const [number, setnumber] = useState(0);
 
@@ -20,6 +21,7 @@ function App(props) {
       </div>
       <Info location="korea" />
       <Profile username="Jihu Park" name="(박지후)" />
+      <Graph />
     </div>
   );
 }
