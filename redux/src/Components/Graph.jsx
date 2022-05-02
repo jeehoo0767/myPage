@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 
-const _nodes = [
-  { id: "청소년", value: 3, group: "person" },
-  { id: "하하하", value: 3, group: "media" },
-  { id: "드라마", value: 4, group: "media" },
-  { id: "드라마", value: 4, group: "media" },
+const nodes = [
+  { id: "청소년", value: 6, group: "media" },
+  { id: "하하하", value: 2, group: "media" },
+  { id: "안녕하세요", value: 9, group: "media" },
+  { id: "헤헤", value: 7, group: "media" },
 ];
-const _links = [
+const links = [
   { source: "청소년", target: "하하하", value: 2 },
-  { source: "청소년", target: "드라마", value: 100 },
-  { source: "드라마", target: "드라마", value: 100 },
-  { source: "청소년", target: "청소년", value: 4 },
+  { source: "안녕하세요", target: "청소년", value: 5 },
+  { source: "안녕하세요", target: "하하하", value: 12 },
+  { source: "헤헤", target: "하하하", value: 1 },
+  { source: "헤헤", target: "청소년", value: 7 },
 ];
 
 const Graph = () => {
   useEffect(() => {
-    const nodes = _nodes.map((d) => {
-      return Object.create(d);
-    });
-    const links = _links.map((d) => {
-      return Object.create(d);
-    });
+    // const nodes = _nodes.map((d) => {
+    //   return Object.create(d);
+    // });
+    // const links = _links.map((d) => {
+    //   return Object.create(d);
+    // });
 
     const width = 500;
     const height = 500;
@@ -38,12 +39,12 @@ const Graph = () => {
           return d.id;
         })
       )
-      .force("charge", d3.forceManyBody().strength(-100))
+      .force("charge", d3.forceManyBody().strength(300))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force(
         "collide",
         d3.forceCollide().radius(function (d) {
-          return d.value * 1;
+          return d.value * 20;
         })
       );
 
@@ -80,7 +81,7 @@ const Graph = () => {
       .each(function (d) {
         d3.select(this)
           .append("circle")
-          .attr("r", d.value * 5)
+          .attr("r", d.value * 4)
           .attr("fill", fillCircle(d.group));
         d3.select(this)
           .append("text")

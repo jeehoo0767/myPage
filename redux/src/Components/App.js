@@ -20,7 +20,7 @@ function App(props) {
         <DisplayNumberRoot />
       </div>
       <Info location="korea" />
-      <Profile username="Jihu Park" name="(박지후)" />
+      {/* <Profile username="Jihu Park" name="(박지후)" /> */}
       <Graph />
     </div>
   );

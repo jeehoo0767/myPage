@@ -12,12 +12,12 @@ code {
     monospace;
 }
 
-#NETWORK_GRAPH .node-label {
+#network-svg .node-label {
   font-size: 14px;
   font-weight: bold;
   color: #111;
   stroke: white;
-  stroke-width: 1.5px;
+  stroke-width: 1.2px;
   paint-order: stroke fill;
   text-anchor: middle;
 }
